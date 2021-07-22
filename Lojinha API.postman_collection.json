@@ -1,0 +1,368 @@
+{
+	"info": {
+		"_postman_id": "b99acf39-9cb3-4d6f-a164-a7a528649bc1",
+		"name": "Lojinha API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cadastrar um novo usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuarioNome\": \"Welita Luisa\",\r\n  \"usuarioLogin\": \"WelitaMendes\",\r\n    \"usuarioSenha\": \"welita123\"\r\n\r\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/usuarios",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"usuarios"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obter Tok do Usuario",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"usuarioLogin\": \"admin\",\r\n  \"usuarioSenha\": \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}//v2/login",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"",
+						"v2",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar um novo Produto",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMTEzIiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhTWVuZGVzIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.dQytt85BKeb7vDPCFgo6owH9Vrrp7WPnfHXq3E_lsoA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Celular Sansung A71\",\r\n  \"produtoValor\": 3000.00,\r\n  \"produtoCores\": [\r\n    \"Rosa\"\r\n  ],\r\n  \"produtoUrlMock\": \"\",\r\n  \"componentes\": [\r\n    {\r\n      \"componenteNome\": \"Capinha\",\r\n      \"componenteQuantidade\": 1\r\n    },\r\n     {\r\n      \"componenteNome\": \"Carregador\",\r\n      \"componenteQuantidade\": 1\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Alterar um produto existente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMTEzIiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhTWVuZGVzIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.dQytt85BKeb7vDPCFgo6owH9Vrrp7WPnfHXq3E_lsoA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"produtoNome\": \"Produto Mockado\",\r\n  \"produtoValor\": 90,\r\n  \"produtoCores\": [\r\n\r\n  ],\r\n  \"produtoUrlMock\": \"http://demo6592571.mockable.io/lojinha/v2/produtos/14240\",\r\n  \"componentes\": []\r\n  \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos/14240",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos",
+						"14240"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos os produtos do usuario",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMTEzIiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhTWVuZGVzIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.dQytt85BKeb7vDPCFgo6owH9Vrrp7WPnfHXq3E_lsoA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deletar um produto da lojinha",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "token",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMTEzIiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhTWVuZGVzIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.dQytt85BKeb7vDPCFgo6owH9Vrrp7WPnfHXq3E_lsoA",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos/13807",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos",
+						"13807"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar um produto do usuario",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": " eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMDA1IiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhIEx1aXNhIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.XY8t4xDz6SqskyIXtsYbWDZ-9RlxaiNw1imQ-_tOSuc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v2/produtos/6417",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos",
+						"6417"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar todos os produtos do usuario usando filtros",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": " eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMDA1IiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhIEx1aXNhIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.XY8t4xDz6SqskyIXtsYbWDZ-9RlxaiNw1imQ-_tOSuc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v2/produtos?produtoNome=4&produtoCor=\"preto\"",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos"
+					],
+					"query": [
+						{
+							"key": "produtoNome",
+							"value": "4"
+						},
+						{
+							"key": "produtoCor",
+							"value": "\"preto\""
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buscar Dados de um Componentes",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "token",
+						"value": " eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMDA1IiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhIEx1aXNhIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.XY8t4xDz6SqskyIXtsYbWDZ-9RlxaiNw1imQ-_tOSuc",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v2/produtos/13954/componentes/9346",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos",
+						"13954",
+						"componentes",
+						"9346"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Adicionar um componente",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					},
+					{
+						"key": "token",
+						"value": " eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c3VhcmlvaWQiOiIzMDA1IiwidXN1YXJpb2xvZ2luIjoiV2VsaXRhIEx1aXNhIiwidXN1YXJpb25vbWUiOiJXZWxpdGEgTHVpc2EifQ.XY8t4xDz6SqskyIXtsYbWDZ-9RlxaiNw1imQ-_tOSuc",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"componenteNome\": \"Lapis\",\r\n  \"componenteQuantidade\": 12\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v2/produtos/13954/componentes",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v2",
+						"produtos",
+						"13954",
+						"componentes"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Mok de produto ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://demo6592571.mockable.io/lojinha/v2/produtos/14240",
+					"protocol": "http",
+					"host": [
+						"demo6592571",
+						"mockable",
+						"io"
+					],
+					"path": [
+						"lojinha",
+						"v2",
+						"produtos",
+						"14240"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
